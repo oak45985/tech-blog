@@ -6,7 +6,9 @@ router.get('/', (req, res) => {
     console.log(req.session);
     Entry.findAll({
         attributes: [
-
+            'id',
+            'entry_url',
+            'title'
         ],
         include: [
             {

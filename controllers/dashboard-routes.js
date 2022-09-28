@@ -8,7 +8,9 @@ router.get('/', (req, res) => {
             user_id: req.session.user_id
         },
         attributes: [
-
+            'id',
+            'entry_url',
+            'title'
         ],
         include: [
             {
