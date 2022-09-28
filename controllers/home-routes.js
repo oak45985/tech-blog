@@ -3,16 +3,16 @@ const sequelize = require('../config/connection');
 const { Entry, User, Observation } = require('../models');
 
 router.get('/', (req, res) => {
-    console.log(req.session);
     Entry.findAll({
         attributes: [
             'id',
             'entry_url',
-            'title'
+            'title',
+            'entry_text'
         ],
         include: [
             {
-                Model: Observation,
+                model: Observation,
                 attributes: ['id', 'observation_text', 'user_id', 'entry_id'],
                 include: {
                     model: User,
@@ -26,11 +26,11 @@ router.get('/', (req, res) => {
         ]
     })
     .then(dbEntryData => {
-        const entries = dbEntryData.map(entry = entry.get({ plain: true }));
+        const entries = dbEntryData.map(entry => entry.get({ plain: true }));
         res.render('homepage', {
             entries,
             loggedIn: req.session.loggedIn
-        });
+          });
     })
     .catch(err => {
         console.log(err);

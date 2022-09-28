@@ -11,6 +11,7 @@ router.get('/', (req, res) => {
             'id',
             'entry_url',
             'title',
+            'entry_text',
             'created_at',
         ],
         order: [['created_at', 'DESC']],
@@ -46,6 +47,7 @@ router.get('/:id', (req, res) => {
             'id',
             'entry_url',
             'title',
+            'entry_text',
             'created_at'
         ],
         include: [
@@ -69,11 +71,12 @@ router.get('/:id', (req, res) => {
 });
 
 //CREATE ENTRY
-router.post('/', checkAuth, (req, res) => {
+router.post('/', (req, res) => {
     Entry.create({
         title: req.body.title,
         entry_url: req.body.entry_url,
-        user_id: req.session.user_id
+        entry_text: req.body.entry_text,
+        user_id: req.body.user_id
     })
     .then(dbEntryData => res.json(dbEntryData))
     .catch(err => {

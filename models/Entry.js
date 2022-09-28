@@ -22,6 +22,10 @@ Entry.init(
                 isURL: true
             }
         },
+        entry_text: {
+            type: DataTypes.TEXT,
+            allowNull: false
+        },
         user_id: {
             type: DataTypes.INTEGER,
             references: {

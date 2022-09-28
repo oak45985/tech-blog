@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
         attributes: [
             'id',
             'entry_url',
-            'title'
+            'title',
+            'entry_text'
         ],
         include: [
             {
@@ -28,7 +29,7 @@ router.get('/', (req, res) => {
         ]
     })
     .then(dbEntryData => {
-        const entries = dbEntryData.map(entry = entry.get({ plain: true }));
+        const entries = dbEntryData.map(entry => entry.get({ plain: true }));
         res.render('dashboard', {
             entries,
             loggedIn: true
