@@ -1,0 +1,27 @@
+<section>
+    <h2>Create a New Blog Entry</h2>
+
+    <form class="new-entry-form">
+        <div>
+            <label for="entry-title">Entry Title</label>
+            <input type="text" id="entry-title" name="entry-title"/>
+        </div>
+        <div>
+            <label for="entry-content">Blog Entry</label>
+            <textarea type="textbox" id="entry-content" name="entry-content" rows="5"/>
+        </div>
+        <div>
+            <button type="submit" class="btn">Create</button>
+        </div>        
+    </form>
+</section>
+{{#if entries.length}}
+<section>
+    <h2>Your Blog Entries</h2>
+    <ul>
+        {{#each entries as |entries|}}
+        <li>
+            
+        </li>
+    </ul>
+</section>
