@@ -1,21 +1,22 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
 const { Entry, User, Observation } = require('../models');
+const checkAuth = require('../utils/auth');
 
-router.get('/', (req, res) => {
+router.get('/', checkAuth, (req, res) => {
     Entry.findAll({
         where: {
             user_id: req.session.user_id
         },
         attributes: [
             'id',
-            'entry_url',
             'title',
+            'entry_url',
             'entry_text'
         ],
         include: [
             {
-                Model: Observation,
+                model: Observation,
                 attributes: ['id', 'observation_text', 'user_id', 'entry_id'],
                 include: {
                     model: User,
