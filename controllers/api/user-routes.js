@@ -81,7 +81,7 @@ router.post('/login', (req, res) => {
             res.status(400).json({ message: 'No user with this email' });
             return;
         }
-        const goodPw = dbUserData.checkPassword(req.body.password);
+        const goodPw = dbUserData.checkPw(req.body.password);
         if(!goodPw) {
             res.status(400).json({ message: 'Password incorrect' });
             return;
