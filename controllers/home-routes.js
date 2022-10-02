@@ -49,7 +49,7 @@ router.get('/login', (req, res) => {
 router.get('/entry/:id', (req, res) => {
     Entry.findOne({
         where: {
-            id: req.session.user_id
+            id: req.params.id
         },
         attributes: [
             'id',
@@ -60,7 +60,7 @@ router.get('/entry/:id', (req, res) => {
         include: [
             {
                 model: Observation,
-                attributes: ['id', 'observation_text', 'user_id', 'entry_id'],
+                attributes: ['id', 'observation_text', 'user_id', 'entry_id', 'created_at'],
                 include: {
                     model: User,
                     attributes: ['username']

@@ -1,13 +1,13 @@
 <main class="entry">
     <div class="title">
-        <h2>{{title}}</h2>
+        <h2><a href="/entry/{{id}}">{{title}}</a></h2>
         <a href="{{entry_url}}" target="_blank">{{entry_url}}</a>
     </div>
     <div class="content">
         <p>{{entry_text}}</p>
     </div>
     <div class="items">
-        This entry created on {{created_at}}<br>
-        <a href="/entry/{{id}}">{{observations.length}}</a>
+        This entry created by {{user.username}} on {{created_at}}<br>
+        {{observations.length}} observations made.
     </div>
 </main>

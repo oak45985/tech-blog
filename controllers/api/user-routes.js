@@ -24,7 +24,7 @@ router.get('/:id', (req, res) => {
         include: [
             {
                 model: Entry,
-                attributes: ['id', 'title', 'entry_url', 'created_at']
+                attributes: ['id', 'title', 'entry_url', 'entry_text', 'created_at']
             },
             {
                 model: Observation,
@@ -96,25 +96,25 @@ router.post('/login', (req, res) => {
     });
 });
 
-router.put('/:id', (req, res) => {
-    User.update(req.body, {
-        individualHooks: true,
-        where: {
-            id: req.params.id
-        }
-    })
-    .then(dbUserUpdate => {
-        if(!dbUserUpdate[0]) {
-            res.status(404).json({ message: 'No user with this ID' });
-            return;
-        }
-        res.json(dbUserUpdate);
-    })
-    .catch(err => {
-        console.log(err);
-        res.status(500).json(err);
-    });
-});
+// router.put('/:id', (req, res) => {
+//     User.update(req.body, {
+//         individualHooks: true,
+//         where: {
+//             id: req.params.id
+//         }
+//     })
+//     .then(dbUserUpdate => {
+//         if(!dbUserUpdate[0]) {
+//             res.status(404).json({ message: 'No user with this ID' });
+//             return;
+//         }
+//         res.json(dbUserUpdate);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//     });
+// });
 
 //DELETE ONE USER
 router.delete('/:id', checkAuth, (req, res) => {

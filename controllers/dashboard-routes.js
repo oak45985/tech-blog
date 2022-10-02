@@ -25,7 +25,7 @@ router.get('/', checkAuth, (req, res) => {
             },
             {
                 model: User,
-                attributes: ['username']
+                attributes: ['username',]
             }
         ]
     })

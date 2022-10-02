@@ -14,7 +14,6 @@ router.get('/', (req, res) => {
             'entry_text',
             'created_at',
         ],
-        order: [['created_at', 'DESC']],
         include: [
             {
                 model: Observation,
@@ -52,6 +51,14 @@ router.get('/:id', (req, res) => {
         ],
         include: [
             {
+                model: Observation,
+                attributes: ['id', 'observation_text', 'entry_id', 'user_id', 'created_at' ],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
                 model: User,
                 attributes: ['username']
             }
@@ -71,12 +78,12 @@ router.get('/:id', (req, res) => {
 });
 
 //CREATE ENTRY
-router.post('/', (req, res) => {
+router.post('/', checkAuth, (req, res) => {
     Entry.create({
         title: req.body.title,
         entry_url: req.body.entry_url,
         entry_text: req.body.entry_text,
-        user_id: req.body.user_id
+        user_id: req.session.user_id
     })
     .then(dbEntryData => res.json(dbEntryData))
     .catch(err => {
