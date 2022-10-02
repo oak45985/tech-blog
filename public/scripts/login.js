@@ -14,7 +14,7 @@ async function loginHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
-            document.location.replace('/dashboard');
+            document.location.replace('/dashboard/');
         } else {
             alert(response.statusText);
         }
@@ -39,7 +39,7 @@ async function signUpHandler(event) {
             headers: { 'Content-Type': 'application/json' }
         });
         if (response.ok) {
-            console.log('good to go!');
+            document.location.replace('/dashboard/');
         } else {
             alert(response.statusText);
         }

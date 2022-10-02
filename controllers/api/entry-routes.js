@@ -96,7 +96,9 @@ router.post('/', checkAuth, (req, res) => {
 router.put('/:id', checkAuth, (req, res) => {
     Entry.update(
         {
-            title: req.body.title
+            title: req.body.title,
+            entry_url: req.body.entry_url,
+            entry_text: req.body.entry_text
         },
         {
             where: {
