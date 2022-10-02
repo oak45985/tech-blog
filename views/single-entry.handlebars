@@ -1,0 +1,16 @@
+{{> entry-item entry }}
+
+{{#if loggedIn}}
+<form class="observe-form">
+    <div>
+        <textarea name="observe-content"></textarea>
+    </div>
+    <div>
+        <button type="submit">Add Observation</button>
+    </div>
+</form>
+{{/if}}
+
+{{#if loggedIn}}
+<script src="/scripts/observe.js"></script>
+{{/if}}

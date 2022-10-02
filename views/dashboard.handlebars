@@ -7,6 +7,10 @@
             <input type="text" id="entry-title" name="entry-title"/>
         </div>
         <div>
+            <label for="entry-url">Your Webpage</label>
+            <input type="text" id="entry-url" name="entry-url"/>
+        </div>
+        <div>
             <label for="entry-content">Blog Entry</label>
             <textarea type="textbox" id="entry-content" name="entry-content" rows="5">Your new blog entry goes here...</textarea>
         </div>
@@ -15,13 +19,17 @@
         </div>        
     </form>
 </section>
-{{!-- {{#if entries.length}}
+{{#if entries.length}}
 <section>
     <h2>Your Blog Entries</h2>
     <ul>
         {{#each entries as |entries|}}
         <li>
-
+            {{> entry-item entry}}
+            <a href="/entry/{{id}}">Take a look!</a>
         </li>
+        {{/each}}
     </ul>
-</section> --}}
+</section>
+{{/if}}
+<script src="/scripts/create-entry.js"></script>

@@ -46,4 +46,48 @@ router.get('/login', (req, res) => {
     res.render('login');
 });
 
+router.get('/entry/:id', (req, res) => {
+    Entry.findOne({
+        where: {
+            id: req.session.user_id
+        },
+        attributes: [
+            'id',
+            'title',
+            'entry_url',
+            'entry_text'
+        ],
+        include: [
+            {
+                model: Observation,
+                attributes: ['id', 'observation_text', 'user_id', 'entry_id'],
+                include: {
+                    model: User,
+                    attributes: ['username']
+                }
+            },
+            {
+                model: User,
+                attributes: ['username']
+            }
+        ]
+    })
+    .then(dbEntryData => {
+        if (!dbEntryData) {
+            res.status(404).json({ message: "No blog entry with this id" });
+            return;
+        }
+        const entry = dbEntryData.get({ plain: true });
+
+        res.render('single-entry', {
+            entry,
+            loggedIn: req.session.loggedIn
+        })
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json(err);
+    });
+});
+
 module.exports = router;
