@@ -1,0 +1,19 @@
+<div>
+    <h2>Update an Entry</h2>
+    <form class="update-entry">
+        <div>
+            <input type="text" id="entry-title" name="entry-title" value="{{entry.title}}"/>
+        </div>
+        <div>
+            <input type="text" id="entry-url" name="entry-url" value="{{entry.entry_url}}"/>
+        </div>
+        <div>
+            <textarea type="textbox" id="entry-content" name="entry-content" rows="5">{{entry.entry_text}}</textarea>
+        </div>
+        <button type="submit">Update Entry</button>
+        <button type="button" class="delete-entry-button">Delete Entry</button>
+    </form>
+</div>
+
+{{> observations entry.observations}}
+

@@ -8,7 +8,8 @@ router.get('/', (req, res) => {
             'id',
             'entry_url',
             'title',
-            'entry_text'
+            'entry_text',
+            'created_at'
         ],
         include: [
             {
@@ -55,7 +56,8 @@ router.get('/entry/:id', (req, res) => {
             'id',
             'title',
             'entry_url',
-            'entry_text'
+            'entry_text',
+            'created_at'
         ],
         include: [
             {

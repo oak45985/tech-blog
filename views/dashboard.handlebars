@@ -23,10 +23,10 @@
 <section>
     <h2>Your Blog Entries</h2>
     <ul>
-        {{#each entries as |entries|}}
+        {{#each entries as |entry|}}
         <li>
             {{> entry-item entry}}
-            <a href="/entry/{{id}}">Take a look!</a>
+            <a href="/dashboard/update/{{entry.id}}" class="update-entry">Update Entry</a>
         </li>
         {{/each}}
     </ul>
