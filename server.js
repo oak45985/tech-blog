@@ -12,7 +12,7 @@ const helpers = require('./utils/helpers');
 
 require('dotenv').config();
 const sess = {
-    secret: process.env.DB_SECRET,
+    secret: "secretthing",
     cookie: {},
     resave: false,
     saveUninitialized: true,
