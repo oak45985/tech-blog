@@ -8,7 +8,7 @@ const PORT = process.env.PORT || 3006;
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
-const helpers = require('./utils/helpers');
+// const helpers = require('./utils/helpers');
 
 require('dotenv').config();
 const sess = {
